@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="My Account"
+    android:id="@+id/accountFragment"
+    android:icon="@drawable/ic_account"/>
+    <item android:title="My Orders"
+        android:id="@+id/ordersFragment"
+        android:icon="@drawable/ic_orders"/>
+    <item android:title="Shopping"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_shopping_hm"/>
+    <item android:title="My Favorites"
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/ic_favorite"/>
+    <item android:title="Add Cart"
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_add_shopping_cart"/>
+</menu>
