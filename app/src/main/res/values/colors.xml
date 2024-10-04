@@ -3,8 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Primary">#FAF54702</color>
-    <color name="accent">#FAF54702</color>
+    <color name="PrimaryDark">#FA7C2604</color>
+    <color name="accent">#F8FD6D33</color>
     <color name="gry">#E2AAA7A4</color>
     <color name="blueGre">#E266B1B1</color>
+    <color name="bGreen">#167A69</color>
     <color name="red">#FF0938</color>
 </resources>

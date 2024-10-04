@@ -59,8 +59,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crd_random_item"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_190sdp"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
@@ -74,9 +74,9 @@
                     android:id="@+id/rec_random_items"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
-                    android:layout_marginStart="@dimen/_25sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_Randomlable" />
 
@@ -98,8 +98,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crd_Women_item"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
@@ -142,8 +142,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crd_men_item"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
@@ -159,6 +159,15 @@
                     android:layout_height="match_parent"
                     android:background="@color/accent" />
             </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Rec_menItems"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/crd_men_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
