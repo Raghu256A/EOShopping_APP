@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_gravity="center"
+    android:foregroundGravity="center"
+    tools:context=".signpages.LaunchActivity">
+
+  <ImageView
+      android:layout_width="@dimen/_250sdp"
+      android:layout_height="@dimen/_250sdp"
+      android:foregroundGravity="center"
+      android:scaleType="fitXY"
+      android:id="@+id/imv_logoIcon"
+      android:src="@drawable/eoshopping"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginTop="@dimen/_105sdp"
+      tools:ignore="MissingConstraints" />
+
+  <ProgressBar
+      android:layout_width="@dimen/_60sdp"
+      android:layout_height="@dimen/_60sdp"
+      android:background="#F6F5F5"
+      android:scaleType="fitXY"
+      android:indeterminateDrawable="@drawable/progress_icon"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginTop="@dimen/_25sdp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imv_logoIcon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
