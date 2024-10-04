@@ -28,7 +28,7 @@ class LaunchActivity : AppCompatActivity() {
             for(i in time downTo 0){
                 delay(1000)
             }
-            val intent = Intent(this@LaunchActivity, SignInActivity::class.java)
+            val intent = Intent(this@LaunchActivity, MainActivity::class.java)
             startActivity(intent)
         }
 

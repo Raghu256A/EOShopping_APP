@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:title="My Account"
-    android:id="@+id/accountFragment"
-    android:icon="@drawable/ic_account"/>
-    <item android:title="My Orders"
-        android:id="@+id/ordersFragment"
-        android:icon="@drawable/ic_orders"/>
-    <item android:title="Shopping"
+    <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_shopping_hm"/>
-    <item android:title="My Favorites"
+        android:icon="@drawable/ic_shopping_hm"
+        android:title="Shopping" />
+
+    <item
         android:id="@+id/favoritesFragment"
-        android:icon="@drawable/ic_favorite"/>
-    <item android:title="Add Cart"
+        android:icon="@drawable/ic_favorite"
+        android:title="My Favorites" />
+    <item
         android:id="@+id/cartFragment"
-        android:icon="@drawable/ic_add_shopping_cart"/>
+        android:icon="@drawable/ic_add_shopping_cart"
+        android:title="Add Cart" />
+    <item
+        android:id="@+id/ordersFragment"
+        android:icon="@drawable/ic_orders"
+        android:title="My Orders" />
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@drawable/ic_account"
+        android:title="My Account" />
 </menu>
