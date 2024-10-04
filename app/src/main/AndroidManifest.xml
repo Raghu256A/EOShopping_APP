@@ -16,9 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".signpages.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".signpages.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".signpages.SignInActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".signpages.LaunchActivity"
             android:exported="true">
