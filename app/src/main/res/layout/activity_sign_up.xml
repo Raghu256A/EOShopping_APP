@@ -35,7 +35,7 @@
                     android:gravity="center"
                     android:text="Create your account.."
                     android:textColor="@color/bGreen"
-                    android:textSize="@dimen/_25ssp"
+                    android:textSize="@dimen/_20ssp"
                     android:textStyle="italic|bold" />
                 <ImageView
                     android:id="@+id/imv_logoIcon"
@@ -47,17 +47,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
             </LinearLayout>
-            <ImageView
-                android:id="@+id/imv_profile"
-                android:layout_width="@dimen/_135sdp"
-                android:layout_height="@dimen/_135sdp"
-                android:layout_marginBottom="@dimen/_50sdp"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_profile"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/pic"
-                android:elevation="@dimen/_50sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:scaleType="fitXY"
+                android:layout_marginBottom="@dimen/_50sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_header"
-                tools:ignore="MissingConstraints" />
+                app:shapeAppearanceOverlay="@style/CircularImageView"
+                android:src="@drawable/pic" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/FullName_tvl"
@@ -69,7 +71,7 @@
                 android:hint="enter Full Name"
                 android:padding="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imv_profile">
+                app:layout_constraintTop_toBottomOf="@id/img_profile">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_fullName"
@@ -96,7 +98,8 @@
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:maxLength="11"
+                    android:digits="0123456789" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -163,7 +166,7 @@
 
 
             <Button
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_signUp"
                 android:layout_width="@dimen/_160sdp"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -183,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/btn_signin">
+                app:layout_constraintTop_toBottomOf="@id/btn_signUp">
 
                 <TextView
                     android:id="@+id/tv_text"
@@ -197,7 +200,7 @@
                     android:textStyle="italic|bold" />
 
                 <TextView
-                    android:id="@+id/tv_signUp"
+                    android:id="@+id/tv_signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"

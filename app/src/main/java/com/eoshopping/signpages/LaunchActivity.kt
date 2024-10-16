@@ -6,6 +6,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.eoshopping.MainActivity
 import com.eoshopping.R
+
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,12 +16,15 @@ import kotlinx.coroutines.launch
 
 class LaunchActivity : AppCompatActivity() {
     private var job: Job?=null
+    private lateinit var storage: FirebaseStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
+        storage = FirebaseStorage.getInstance()
         changeScreen(5)
+
 
 
     }
