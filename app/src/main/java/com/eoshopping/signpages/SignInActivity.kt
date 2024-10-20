@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.eoshopping.MainActivity
 import com.eoshopping.R
 import com.eoshopping.common_utils.CommonUtil
+import com.eoshopping.common_utils.Constants
 import com.eoshopping.pojo.UserDo
 import com.eoshopping.repository.UserRepository
 import com.eoshopping.runtime_permission.RunTimePermissions
@@ -50,7 +51,9 @@ class SignInActivity : AppCompatActivity() {
         userViewModel.loginStatus.observe(this){status->
             if (status.first){
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this,MainActivity::class.java))
+                var intent = Intent(this,MainActivity::class.java)
+                intent.putExtra("UserId",userId)
+                startActivity(intent)
             }else{
                 CommonUtil.showAlertDialog(this,"Alert","Login Failed "+status.second)
 
@@ -75,9 +78,9 @@ class SignInActivity : AppCompatActivity() {
             var alerts: String? = getAlerts(userId!!, password!!)
             if (alerts.isNullOrEmpty()) {
                if (isLoginWithEmail(userId!!)==true) {
-                   userViewModel.loginWithEmail(userId!!,CommonUtil.encrypt(password!!))
+                   userViewModel.loginWithEmail(userId!!,password!!)
                }else{
-                   userViewModel.loginWithMobile(userId!!, CommonUtil.encrypt(password!!))
+                   userViewModel.loginWithMobile(userId!!,password!!)
                }
 
             } else {
@@ -138,6 +141,15 @@ class SignInActivity : AppCompatActivity() {
         if(hasCharU.containsMatchIn(userId)||hasCharL.containsMatchIn(userId)) {
             value=true
         }
+        Constants.IsMobile=value
         return value
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME )
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

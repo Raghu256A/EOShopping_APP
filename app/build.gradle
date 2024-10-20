@@ -44,6 +44,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3" // Adjust the version as needed
+
     def nav_version = "2.3.5"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -56,6 +58,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+    implementation 'androidx.cardview:cardview:1.0.0'
     //intuit
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
@@ -80,6 +83,5 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-appcheck'
     implementation 'com.google.firebase:firebase-appcheck-playintegrity'
-    implementation 'androidx.security:security-crypto:1.1.0-alpha03'
 
 }

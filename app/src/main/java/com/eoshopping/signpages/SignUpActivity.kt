@@ -87,7 +87,7 @@ class SignUpActivity : AppCompatActivity() {
             var alert:String?=getAlerts()
             if (alert.isNullOrEmpty()){
                 val user=UserDo(fullName=fullName!!, mobileNumber = phone!!,
-                    email = email!!,password=CommonUtil.encrypt(password!!),profileImageUrl =null)
+                    email = email!!,password=(password!!),profileImageUrl =null)
                 userViewModel.registerUser(user,profilePicUri)
 
 

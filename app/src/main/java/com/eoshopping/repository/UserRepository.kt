@@ -1,7 +1,10 @@
 package com.eoshopping.repository
 
+import android.content.ContentValues.TAG
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.eoshopping.common_utils.Constants
 import com.eoshopping.pojo.UserDo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -9,6 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.tasks.await
 
 class UserRepository {
     private val db :FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -88,6 +92,34 @@ class UserRepository {
                     callback(false,error.message)
                 }
             })
+    }
+
+    suspend fun  getUserData(userId: String?) : UserDo?{
+        return  try {
+            if (!Constants.IsMobile){
+                val reference = db.getReference("UserDetails").orderByChild("mobileNumber").equalTo(userId).get().await()
+                if (reference.exists()) {
+                    val userMap = reference.children.first().getValue(UserDo::class.java)
+                    userMap
+                } else {
+                    null // User not found
+                }
+            }else{
+               val reference=db.getReference("UserDetails").orderByChild("email").equalTo(userId).get().await()
+                if (reference.exists()) {
+                    val userMap = reference.children.first().getValue(UserDo::class.java)
+                    userMap
+                } else {
+                    null // User not found
+                }
+
+            }
+
+
+        }catch (e:Exception){
+                 null
+        }
+
     }
 
 }

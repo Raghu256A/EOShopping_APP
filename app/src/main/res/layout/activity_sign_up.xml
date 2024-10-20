@@ -47,19 +47,35 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="MissingConstraints" />
             </LinearLayout>
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img_profile"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:scaleType="fitXY"
-                android:layout_marginBottom="@dimen/_50sdp"
-                app:layout_constraintStart_toStartOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/cl_image"
                 app:layout_constraintTop_toBottomOf="@+id/ll_header"
-                app:shapeAppearanceOverlay="@style/CircularImageView"
-                android:src="@drawable/pic" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:layout_marginStart="@dimen/_80sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:shapeAppearanceOverlay="@style/CircularImageView"
+                    android:src="@drawable/baseline_account_circle_24" />
+                <ImageButton
+                    android:id="@+id/bnt_Update_pic"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/add_circle"
+                    app:layout_constraintTop_toTopOf="@id/img_profile"
+                    app:layout_constraintStart_toStartOf="@id/img_profile"
+                    app:layout_constraintEnd_toEndOf="@id/img_profile"
+                    android:layout_marginTop="118dp"
+                    android:layout_marginStart="85dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/FullName_tvl"
@@ -71,7 +87,7 @@
                 android:hint="enter Full Name"
                 android:padding="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_profile">
+                app:layout_constraintTop_toBottomOf="@id/cl_image">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_fullName"

@@ -101,21 +101,6 @@ class CommonUtil {
             return ""
         }
 
-        fun encrypt(data:String):String{
-            val secretKey=SecretKeySpec(KEY.toByteArray(Charsets.UTF_8), ALGORITHM)
-            val cipher=Cipher.getInstance(ALGORITHM)
-            cipher.init(Cipher.ENCRYPT_MODE,secretKey)
-            val encryptedData = cipher.doFinal(data.toUpperCase().toByteArray(Charsets.UTF_8))
-            return Base64.encodeToString(encryptedData, Base64.DEFAULT).toUpperCase()
-        }
-        fun decrypt(encryptedData: String): String {
-            val secretKey = SecretKeySpec(KEY.toByteArray(Charsets.UTF_8), ALGORITHM)
-            val cipher = Cipher.getInstance(ALGORITHM)
-            cipher.init(Cipher.DECRYPT_MODE, secretKey)
-            val decodedData = Base64.decode(encryptedData.toUpperCase(), Base64.DEFAULT)
-            val originalData = cipher.doFinal(decodedData)
-            return String(originalData, Charsets.UTF_8).toUpperCase()
-        }
     }
 
 }
