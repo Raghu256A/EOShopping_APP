@@ -12,6 +12,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -41,6 +42,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var et_ConfirmPassword : TextInputEditText
     private lateinit var btn_signUp : Button
     private lateinit var tv_signIn : TextView
+    private lateinit var bnt_Update_pic:ImageButton
     private var isPasswordVisible = false
     private var isConfirmPasswordVisible = false
     private  var phone :String?=""
@@ -69,6 +71,7 @@ class SignUpActivity : AppCompatActivity() {
         et_ConfirmPassword = findViewById(R.id.et_ConfirmPassword)
         btn_signUp= findViewById<Button>(R.id.btn_signUp)
         tv_signIn =findViewById<TextView>(R.id.tv_signIn)
+        bnt_Update_pic = findViewById(R.id.bnt_Update_pic)
 
         val repository=UserRepository()
         userViewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
@@ -120,7 +123,7 @@ class SignUpActivity : AppCompatActivity() {
             }
             false
         }
-        imgProfile.setOnClickListener ( View.OnClickListener {
+        bnt_Update_pic.setOnClickListener ( View.OnClickListener {
             selectImageSource();
         })
     }

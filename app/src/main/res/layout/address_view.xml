@@ -42,7 +42,7 @@
                     android:drawableLeft="@drawable/location"
                     android:hint="default"
                     android:enabled="false"
-                    android:textSize="@dimen/_13ssp" />
+                    android:textSize="@dimen/_10ssp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:text="Address Type: "
                     android:textColor="@color/redB"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
 
                 <TextView
@@ -60,9 +60,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="center|left"
-                    android:text="House"
                     android:textColor="@color/redB"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal|bold" />
             </LinearLayout>
 
@@ -94,9 +93,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Raghu"
                     android:textColor="@color/bGreen"
-                    android:textSize="@dimen/_18ssp"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -107,10 +105,8 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:gravity="center|left"
                     android:inputType="textMultiLine"
-                    android:text="ANALOGICS TECH INDIA LTD.
-                    # 9/10, Road No. 6,Nacharam Industrial Estate \nHyderabad – 500 076, Indi"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
 
                 <TextView
@@ -124,7 +120,7 @@
                     android:paddingStart="@dimen/_10sdp"
                     android:text="Add Delivery Instructions"
                     android:textColor="@color/bGreen"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/tv_curt_location"
@@ -139,7 +135,7 @@
                     android:paddingRight="@dimen/_15sdp"
                     android:text="Update Current Location"
                     android:textColor="@color/Primary"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
             </LinearLayout>
 
@@ -161,7 +157,7 @@
                     android:paddingStart="@dimen/_10sdp"
                     android:text="Edit"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/tv_RemoveAdd"
@@ -176,7 +172,7 @@
                     android:paddingRight="@dimen/_15sdp"
                     android:text="Remove"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/tv_setDeftAdd"
@@ -189,7 +185,7 @@
                     android:paddingStart="@dimen/_10sdp"
                     android:text="Set as Default"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="normal" />
             </LinearLayout>
         </LinearLayout>

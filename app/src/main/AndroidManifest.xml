@@ -33,6 +33,10 @@
             android:name=".signpages.SignInActivity"
             android:exported="false" />
         <activity
+            android:name=".Activitys.AddAddress"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
             android:name=".signpages.LaunchActivity"
             android:exported="true">
             <intent-filter>

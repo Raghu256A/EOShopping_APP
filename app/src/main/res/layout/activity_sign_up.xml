@@ -72,7 +72,7 @@
                     app:layout_constraintTop_toTopOf="@id/img_profile"
                     app:layout_constraintStart_toStartOf="@id/img_profile"
                     app:layout_constraintEnd_toEndOf="@id/img_profile"
-                    android:layout_marginTop="118dp"
+                    android:layout_marginTop="125dp"
                     android:layout_marginStart="85dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

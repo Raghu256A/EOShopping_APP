@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "539224528246",
-    "project_id": "eoshopping-bbe9d",
-    "storage_bucket": "eoshopping-bbe9d.appspot.com"
+    "project_number": "788852794544",
+    "project_id": "eoshopping-eb325",
+    "storage_bucket": "eoshopping-eb325.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:539224528246:android:054e8db06291a388875657",
+        "mobilesdk_app_id": "1:788852794544:android:6196ac130ce29fd06ac775",
         "android_client_info": {
           "package_name": "com.eoshopping"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCQLKuDx9FPo9R3BIbFtMDn3US6JwYNoIs"
+          "current_key": "AIzaSyCTc8AOQsy5fCLxhyUnF2SUzeNPO9zdwU4"
         }
       ],
       "services": {

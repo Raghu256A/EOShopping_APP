@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EAF1F1">
-
+    android:layout_height="match_parent">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_gravity="end"
+                android:background="@drawable/cancel"
+                android:contentDescription="h" />
 
             <CheckBox
                 android:id="@+id/chck_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_weight="1.5"
-                android:hint="default"
-                android:layout_marginRight="@dimen/_10sdp"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:text="default"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                />
 
             <LinearLayout
                 android:id="@+id/ll_nm1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/chck_confirm"
-                tools:ignore="MissingConstraints">
-
+                android:orientation="horizontal">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    tools:ignore="MissingConstraints">
+                    android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/add_type_h"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/address_typebgl"
@@ -49,6 +55,7 @@
                         android:textSize="@dimen/_15ssp" />
 
                     <Button
+                        android:id="@+id/add_type_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
@@ -57,6 +64,7 @@
                         android:textSize="@dimen/_15ssp" />
 
                     <Button
+                        android:id="@+id/add_type_o"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/adtypebgr"
@@ -71,18 +79,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/ll_nm1"
-                tools:ignore="MissingConstraints">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/FullName_tvl"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Name"
                     android:padding="@dimen/_10sdp">
+
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_Name"
@@ -91,7 +97,6 @@
                         android:inputType="textMultiLine"
                         android:maxLength="20"
                         android:maxLines="2"
-                        android:text="Raghufbnndjd"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -112,7 +117,6 @@
                         android:digits="0123456789"
                         android:inputType="text"
                         android:maxLength="10"
-                        android:text="1220655566"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -124,57 +128,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/ll_nm2"
-                tools:ignore="MissingConstraints">
-
-                <LinearLayout
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:hint="Country"
                     android:padding="@dimen/_10sdp">
 
-                    <TextView
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_Country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Country"
-                        android:textColor="@color/PrimaryDark"
-                        android:textSize="@dimen/_14ssp"
-                        android:textStyle="bold|normal" />
-
-                    <Spinner
-                        android:id="@+id/sp_country"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:inputType="textMultiLine"
+                        android:maxLength="20"
+                        android:maxLines="2"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
-                </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:hint="State"
                     android:padding="@dimen/_10sdp">
 
-                    <TextView
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_State"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="State"
-                        android:textColor="@color/PrimaryDark"
-                        android:textSize="@dimen/_14ssp"
-                        android:textStyle="bold|normal" />
-
-                    <Spinner
-                        android:id="@+id/sp_state"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:inputType="textMultiLine"
+                        android:maxLength="20"
+                        android:maxLines="2"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
-                </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -182,9 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/ll_cs"
-                tools:ignore="MissingConstraints">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/pincode_tv"
@@ -202,7 +196,6 @@
                         android:digits="0123456789"
                         android:inputType="number"
                         android:maxLength="6"
-                        android:text="125514"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -223,7 +216,6 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:maxLength="30"
-                        android:text="hy"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -235,9 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/ll_pt"
-                tools:ignore="MissingConstraints">
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/landmark_tv"
@@ -254,7 +244,6 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:maxLength="35"
-                        android:text="bk"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -275,7 +264,6 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:maxLength="50"
-                        android:text="hy"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
@@ -295,20 +283,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:text="hy"
                         android:textColor="@color/PrimaryDark"
                         android:textStyle="bold|normal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <Button
+                    android:id="@+id/bnt_addAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="1dp"
                     android:layout_marginBottom="@dimen/_25sdp"
-                    android:layout_gravity="center"
                     android:text="Add"
                     android:textSize="@dimen/_15ssp" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
