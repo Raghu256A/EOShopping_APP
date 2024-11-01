@@ -1,31 +1,27 @@
 package com.eoshopping.signpages
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.eoshopping.MainActivity
 import com.eoshopping.R
 import com.eoshopping.common_utils.CommonUtil
 import com.eoshopping.common_utils.Constants
-import com.eoshopping.pojo.UserDo
 import com.eoshopping.repository.UserRepository
 import com.eoshopping.runtime_permission.RunTimePermissions
 import com.eoshopping.viewModel.UserViewModel
 import com.eoshopping.viewModelFactory.UserViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.FirebaseApp
 
 class SignInActivity : AppCompatActivity() {
     private var userId: String? = ""
@@ -37,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var tv_forgotPassword: TextView
     private var isPasswordVisible = false
     private lateinit var userViewModel: UserViewModel
+    private lateinit var dialog:ProgressDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +51,9 @@ class SignInActivity : AppCompatActivity() {
                 var intent = Intent(this,MainActivity::class.java)
                 intent.putExtra("UserId",userId)
                 startActivity(intent)
+                CommonUtil.closeDialog(dialog)
             }else{
+                CommonUtil.closeDialog(dialog)
                 CommonUtil.showAlertDialog(this,"Alert","Login Failed "+status.second)
 
             }
@@ -77,6 +76,7 @@ class SignInActivity : AppCompatActivity() {
             password = et_password?.text.toString().trim()
             var alerts: String? = getAlerts(userId!!, password!!)
             if (alerts.isNullOrEmpty()) {
+            dialog=  CommonUtil.openDialog(this)
                if (isLoginWithEmail(userId!!)==true) {
                    userViewModel.loginWithEmail(userId!!,password!!)
                }else{
@@ -152,4 +152,5 @@ class SignInActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
+
 }

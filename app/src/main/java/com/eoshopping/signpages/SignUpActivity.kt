@@ -2,14 +2,14 @@ package com.eoshopping.signpages
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
+
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -18,7 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
-import com.eoshopping.MainActivity
+import com.eoshopping.Activitys.CustomProgressDialog
 import com.eoshopping.R
 import com.eoshopping.common_utils.CommonUtil
 import com.eoshopping.pojo.UserDo
@@ -53,6 +53,8 @@ class SignUpActivity : AppCompatActivity() {
     private  var img_URL :String?=""
     private lateinit var userViewModel: UserViewModel
     private var profilePicUri: Uri?=null
+    private lateinit var dialog: ProgressDialog
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +83,10 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "Register Successful", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this,SignInActivity::class.java))
                 finish()
+                CommonUtil.closeDialog(dialog)
+
             }else{
+                CommonUtil.closeDialog(dialog)
                 CommonUtil.showAlertDialog(this,"Alert","Register Failed")
 
             }
@@ -89,6 +94,8 @@ class SignUpActivity : AppCompatActivity() {
         btn_signUp.setOnClickListener(View.OnClickListener {
             var alert:String?=getAlerts()
             if (alert.isNullOrEmpty()){
+                CommonUtil.openDialog(this)
+
                 val user=UserDo(fullName=fullName!!, mobileNumber = phone!!,
                     email = email!!,password=(password!!),profileImageUrl =null)
                 userViewModel.registerUser(user,profilePicUri)
@@ -177,11 +184,13 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun openCamera() {
+        CommonUtil.openDialog(this)
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_CODE_CAMERA)
     }
 
     private fun openGallery() {
+        CommonUtil.openDialog(this)
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, REQUEST_CODE_GALLERY)
     }
@@ -213,5 +222,6 @@ class SignUpActivity : AppCompatActivity() {
 
             }
         }
+        CommonUtil.closeDialog(dialog)
     }
 }

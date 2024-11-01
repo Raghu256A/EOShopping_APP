@@ -8,6 +8,7 @@ import com.eoshopping.common_utils.Constants
 import com.eoshopping.pojo.AddressDo
 import com.eoshopping.pojo.UserDo
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +19,7 @@ import kotlinx.coroutines.tasks.await
 class UserRepository {
     private val db: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val storage: FirebaseStorage = FirebaseStorage.getInstance()
-    private val auth = FirebaseAuth.getInstance()
+    private val auth:FirebaseAuth = FirebaseAuth.getInstance()
 
     fun registerUser(user: UserDo, profilePicUri: Uri?, callback: (Boolean?, String?) -> Unit) {
         auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -221,5 +222,9 @@ class UserRepository {
             e.printStackTrace()
         }
         return itemList
+    }
+    suspend fun updatePassword(userId:String?, callback: (Boolean, String?) -> Unit) {
+        val user =auth.currentUser(userId)
+
     }
 }

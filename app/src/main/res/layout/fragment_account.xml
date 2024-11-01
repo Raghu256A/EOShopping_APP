@@ -165,7 +165,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_10sdp"
                             android:gravity="center|left"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:text="Your Addresses:"
                             android:textColor="@color/accent"
                             android:textSize="@dimen/_15ssp"
@@ -173,13 +173,12 @@
 
                         <Button
                             android:id="@+id/bnt_addAddress"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_weight="2"
-                            android:layout_marginStart="@dimen/_20sdp"
                             android:text="Add"
                             android:backgroundTint="#00E6E3E3"
+                            android:layout_marginRight="@dimen/_25sdp"
                             android:drawableRight="@drawable/add_location_alt"
                             android:textColor="@color/bGreen"
                             android:textStyle="bold" />

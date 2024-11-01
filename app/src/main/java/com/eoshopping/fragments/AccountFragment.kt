@@ -1,12 +1,12 @@
 package com.eoshopping
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.Display
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +22,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.eoshopping.Activitys.AddAddress
+import com.eoshopping.Activitys.CustomProgressDialog
 import com.eoshopping.Adapters.AddressAdapter
+import com.eoshopping.common_utils.CommonUtil
 import com.eoshopping.common_utils.Constants
 import com.eoshopping.pojo.UserDo
 import com.eoshopping.repository.UserRepository
@@ -49,7 +51,7 @@ class AccountFragment : Fragment() {
     private lateinit var bnt_Update_pic:ImageButton
     private var profilePicUri: Uri?=null
     private lateinit var addressAdapter: AddressAdapter
-
+private lateinit var dialog:ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +66,7 @@ class AccountFragment : Fragment() {
         val view =inflater.inflate(R.layout.fragment_account, container, false)
         updateXML(view)
         getUserData(Constants.USER_ID)
-        showAddress()
+
         return view
     }
    private fun updateXML(view: View){
@@ -87,12 +89,14 @@ class AccountFragment : Fragment() {
        })
     }
    private fun getUserData(userId:String){
+       dialog=CommonUtil.openDialog(requireContext())
        val repository= UserRepository()
        viewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
 
        viewModel.getUserData(userId)
        viewModel.userStatus.observe(viewLifecycleOwner){user->
            user?.let {
+
                displayUserData(it)
            }
        }
@@ -108,6 +112,9 @@ class AccountFragment : Fragment() {
                 .into(imgProfile)
 
         }
+        showAddress()
+        CommonUtil.closeDialog(dialog)
+
 
     }
     private fun selectImageSource() {
@@ -124,11 +131,13 @@ class AccountFragment : Fragment() {
     }
 
     private fun openCamera() {
+        dialog=CommonUtil.openDialog(requireContext())
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_CODE_CAMERA)
     }
 
     private fun openGallery() {
+        dialog=CommonUtil.openDialog(requireContext())
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, REQUEST_CODE_GALLERY)
     }
@@ -157,9 +166,12 @@ class AccountFragment : Fragment() {
 
             }
         }
+        CommonUtil.closeDialog(dialog)
+
     }
 
     private fun showAddress(){
+      //  dialog=CommonUtil.openDialog(requireContext())
         rcView_address.layoutManager =LinearLayoutManager(requireContext())
         addressAdapter = AddressAdapter(emptyList())
         val repository= UserRepository()
@@ -172,9 +184,12 @@ class AccountFragment : Fragment() {
             addressAdapter.updateItems(list)
             bnt_addAddress.isEnabled = list.size < 3
         }
+
+
     }
 
     override fun onStart() {
         super.onStart()
+
     }
 }
