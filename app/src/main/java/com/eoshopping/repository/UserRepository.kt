@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
@@ -19,7 +20,7 @@ import kotlinx.coroutines.tasks.await
 class UserRepository {
     private val db: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val storage: FirebaseStorage = FirebaseStorage.getInstance()
-    private val auth:FirebaseAuth = FirebaseAuth.getInstance()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun registerUser(user: UserDo, profilePicUri: Uri?, callback: (Boolean?, String?) -> Unit) {
         auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -203,7 +204,6 @@ class UserRepository {
                         val item = childSnapshot.getValue(AddressDo::class.java)
                         item?.let { itemList.add(it) }
                     }
-                } else {
                 }
             } else {
                 val reference =
@@ -223,8 +223,44 @@ class UserRepository {
         }
         return itemList
     }
-    suspend fun updatePassword(userId:String?, callback: (Boolean, String?) -> Unit) {
-        val user =auth.currentUser(userId)
+
+    suspend fun updatePassword(userId: String?,password: String?, isMobile: Boolean?,callback: (Boolean, String?) -> Unit
+    ) {
+        var userDB: Query? =null
+        if (isMobile == true) {
+           userDB= db.getReference("UserDetails").orderByChild("mobileNumber")
+
+        } else {
+            userDB= db.getReference("UserDetails").orderByChild("email")
+
+        }
+
+          userDB.equalTo(userId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (userdata in snapshot.children) {
+                            val UserId = userdata.key
+                            auth.createUserWithEmailAndPassword(UserId!!, password!!).addOnCompleteListener { a ->
+                                db.getReference("UserDetails").child(UserId).child("password").setValue(password)
+                                    .addOnCompleteListener { task ->
+
+                                        callback(task.isSuccessful, task.exception?.message)
+                                    }
+                            }
+
+
+                        }
+                    } else {
+                        callback(false, "User not found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    callback(false, error.message)
+                }
+            })
+
 
     }
 }

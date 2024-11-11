@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.EOShopping" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-         <item name="colorPrimary">@color/accent</item>
-         <item name="colorPrimaryVariant">@color/blueGre</item>
+         <item name="colorPrimary">@color/white</item>
+         <item name="colorPrimaryVariant">@color/black</item>
     </style>
 </resources>

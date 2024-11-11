@@ -7,9 +7,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.eoshopping.R
 import com.eoshopping.common_utils.CommonUtil
+import com.eoshopping.repository.UserRepository
+import com.eoshopping.viewModel.UserViewModel
+import com.eoshopping.viewModelFactory.UserViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
+import java.lang.Exception
 
 class ForgotPasswordActivity : AppCompatActivity() {
     private lateinit var et_UserId: TextInputEditText
@@ -24,12 +30,16 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private var userId: String? = ""
     private var password: String? = ""
     private var confirmPassword: String? = ""
+    private var isMobile:Boolean?=false;
+    private lateinit var viewModel: UserViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         updateXML()
+        getPasswordStatus()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -42,6 +52,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
         tv_signUp = findViewById<TextView>(R.id.tv_signUp)
         btn_changePassword = findViewById<Button>(R.id.btn_changePassword)
         btn_changePassword.setOnClickListener(View.OnClickListener {
+             var  msg:String?=getAlerts();
+            if (msg.isNullOrEmpty()){
+                viewModel.updatePassword(userId,password,isMobile)
+
+            }else{
+                CommonUtil.showAlertDialog(this,"Alert",msg)
+            }
 
         })
 
@@ -107,7 +124,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
             if(hasCharU.containsMatchIn(userId!!)||hasCharL.containsMatchIn(userId!!)) {
                 alert += userId?.let { CommonUtil.isValidEmail(it) }
+                isMobile =false
             } else {
+                isMobile=true;
                 alert += userId?.let { CommonUtil.isMobileValid(it, "") }
 
             }
@@ -117,5 +136,27 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
 
         return alert
+    }
+    private fun getPasswordStatus(){
+        try{
+            val repository = UserRepository()
+            viewModel = ViewModelProvider(
+                this,
+                UserViewModelFactory(repository)
+            ).get(UserViewModel::class.java)
+
+            viewModel.passwordStatus.observe(this) { status ->
+                if (status.first) {
+                    Toast.makeText(this, "Password updated Successful", Toast.LENGTH_LONG).show()
+                    onBackPressed()
+                    finish()
+                } else {
+                    CommonUtil.showAlertDialog(this, "Alert", status.second + " Failed")
+
+                }
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
 }

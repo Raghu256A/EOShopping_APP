@@ -20,7 +20,8 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     val address: LiveData<Pair<Boolean, String?>> = _address
     private val _addressList = MutableLiveData<List<AddressDo>>()
     val addressList: LiveData<List<AddressDo>> = _addressList
-
+    private val _passwordStatus = MutableLiveData<Pair<Boolean, String?>>()
+    val passwordStatus: LiveData<Pair<Boolean, String?>> = _passwordStatus
 
     fun registerUser(user: UserDo, profilePic: Uri?) {
         repository.registerUser(user, profilePic) { success, message ->
@@ -58,6 +59,14 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         viewModelScope.launch {
             val addressList=repository.getAddress(userIdM,userIdE)
             _addressList.value=addressList
+        }
+    }
+     fun updatePassword (userId: String?,password: String?,isMobile:Boolean?){
+        viewModelScope.launch {
+            repository.updatePassword(userId!!,password!!,isMobile){
+                success,message ->
+                _passwordStatus.postValue(Pair(success, message))
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/Primary</item>
-        <item name="colorPrimaryVariant">@color/Primary</item>
+        <item name="colorPrimaryVariant">@color/bGreen</item>
     </style>
 
     <style name="Theme.EOShopping" parent="Base.Theme.EOShopping" />
